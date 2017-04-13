@@ -27,7 +27,9 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.boot.autoconfigure.jdbc.proxy.ProxyDataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.boot.jdbc.DatabaseDriver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
@@ -156,6 +158,9 @@ public class DataSourceProperties
 	private Xa xa = new Xa();
 
 	private String uniqueName;
+
+	@NestedConfigurationProperty
+	private ProxyDataSourceProperties proxy;
 
 	@Override
 	public void setBeanClassLoader(ClassLoader classLoader) {
@@ -471,6 +476,14 @@ public class DataSourceProperties
 
 	public void setXa(Xa xa) {
 		this.xa = xa;
+	}
+
+	public ProxyDataSourceProperties getProxy() {
+		return this.proxy;
+	}
+
+	public void setProxy(ProxyDataSourceProperties proxy) {
+		this.proxy = proxy;
 	}
 
 	/**

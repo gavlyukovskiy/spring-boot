@@ -145,7 +145,8 @@ public class TomcatDataSourceConfigurationTests {
 		@ConfigurationProperties(prefix = "spring.datasource.tomcat")
 		public DataSource dataSource() {
 			return DataSourceBuilder.create()
-					.type(org.apache.tomcat.jdbc.pool.DataSource.class).build();
+					.type(org.apache.tomcat.jdbc.pool.DataSource.class)
+					.build();
 		}
 
 	}

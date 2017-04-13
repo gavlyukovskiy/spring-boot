@@ -35,6 +35,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DataSourcePoolMetadataProvidersConfiguration {
 
+	@Bean
+	public DataSourcePoolMetadataProvider proxyDataSourcePoolMetadataProvider() {
+		return new ProxyDataSourcePoolMetadataProvider();
+	}
+
 	@Configuration
 	@ConditionalOnClass(org.apache.tomcat.jdbc.pool.DataSource.class)
 	static class TomcatDataSourcePoolMetadataProviderConfiguration {
